@@ -75,68 +75,91 @@
 
 
             #region Answe 03
-            Dictionary<string, string> phoneBook = new Dictionary<string, string>
-            {
-                { "Ahmed", "01012345678" },
-                { "Sara", "01198765432" },
-                { "Ali", "01233344455" },
-                { "Mona", "01599887766" }
-            };
+            //Dictionary<string, string> phoneBook = new Dictionary<string, string>
+            //{
+            //    { "Ahmed", "01012345678" },
+            //    { "Sara", "01198765432" },
+            //    { "Ali", "01233344455" },
+            //    { "Mona", "01599887766" }
+            //};
 
-            phoneBook["Khaled"] = "01000000000";
+            //phoneBook["Khaled"] = "01000000000";
 
-            try
-            {
-                phoneBook.Add("Ahmed", "01111111111"); 
-            }
-            catch (ArgumentException ex)
-            {
-                Console.WriteLine($"Error caught: {ex.Message}");
-            }
+            //try
+            //{
+            //    phoneBook.Add("Ahmed", "01111111111"); 
+            //}
+            //catch (ArgumentException ex)
+            //{
+            //    Console.WriteLine($"Error caught: {ex.Message}");
+            //}
 
-            bool added = phoneBook.TryAdd("Sara", "02222222222");
-            Console.WriteLine($"TryAdd duplicate 'Sara' succeeded? {added}");
+            //bool added = phoneBook.TryAdd("Sara", "02222222222");
+            //Console.WriteLine($"TryAdd duplicate 'Sara' succeeded? {added}");
 
-            bool found = phoneBook.ContainsKey("Ibrahim");
-            Console.WriteLine($"Does 'Ibrahim' exist? {found}");
+            //bool found = phoneBook.ContainsKey("Ibrahim");
+            //Console.WriteLine($"Does 'Ibrahim' exist? {found}");
 
-            string searchResult = phoneBook.GetValueOrDefault("Ibrahim", "Not Found");
-            Console.WriteLine($"Search for Ibrahim: {searchResult}");
+            //string searchResult = phoneBook.GetValueOrDefault("Ibrahim", "Not Found");
+            //Console.WriteLine($"Search for Ibrahim: {searchResult}");
 
-            Console.WriteLine("Keys: " + string.Join(", ", phoneBook.Keys));
-            Console.WriteLine("Values: " + string.Join(", ", phoneBook.Values));
+            //Console.WriteLine("Keys: " + string.Join(", ", phoneBook.Keys));
+            //Console.WriteLine("Values: " + string.Join(", ", phoneBook.Values));
+            //#endregion
+
+
+            //#region Answer 04
+            //HashSet<string> emails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            //emails.Add("ahmed@test.com");
+            //emails.Add("AHMED@test.com");
+            //emails.Add("sara@test.com");
+            //emails.Add("Sara@Test.Com"); 
+
+            //Console.WriteLine($"Stored emails count: {emails.Count}");
+
+            //HashSet<int> setA = [1, 2, 3, 4, 5];
+            //HashSet<int> setB = [4, 5, 6, 7, 8];
+
+            //HashSet<int> unionSet = new HashSet<int>(setA);
+            //unionSet.UnionWith(setB);
+            //Console.WriteLine("UnionWith: " + string.Join(", ", unionSet));
+
+            //HashSet<int> intersectSet = new HashSet<int>(setA);
+            //intersectSet.IntersectWith(setB);
+            //Console.WriteLine("IntersectWith: " + string.Join(", ", intersectSet));
+
+            //HashSet<int> exceptSet = new HashSet<int>(setA);
+            //exceptSet.ExceptWith(setB);
+            //Console.WriteLine("ExceptWith: " + string.Join(", ", exceptSet));
+
+            //bool isSubset = new HashSet<int> { 1, 2 }.IsSubsetOf(setA);
+            //Console.WriteLine($"Is {{1, 2}} a subset of Set A? {isSubset}");
             #endregion
 
+            #region Answer 05
+            Queue<string> printQueue = new Queue<string>();
+            printQueue.Enqueue("Report.pdf");
+            printQueue.Enqueue("Invoice.pdf");
+            printQueue.Enqueue("Letter.docx");
+            printQueue.Enqueue("Resume.pdf");
+            printQueue.Enqueue("Photo.jpg");
 
-            #region Answer 04
-            HashSet<string> emails = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            Console.WriteLine($"Queue Count: {printQueue.Count}");
+            Console.WriteLine($"Queue items: {string.Join(", ", printQueue)}");
 
-            emails.Add("ahmed@test.com");
-            emails.Add("AHMED@test.com");
-            emails.Add("sara@test.com");
-            emails.Add("Sara@Test.Com"); 
+            Console.WriteLine($"Next up (Peek): {printQueue.Peek()}");
 
-            Console.WriteLine($"Stored emails count: {emails.Count}");
+            Console.WriteLine("\nProcessing Print Queue:");
+            while (printQueue.Count > 0)
+            {
+                string doc = printQueue.Dequeue();
+                Console.WriteLine($"Printing: [{doc}]");
+            }
 
-            HashSet<int> setA = [1, 2, 3, 4, 5];
-            HashSet<int> setB = [4, 5, 6, 7, 8];
-
-            HashSet<int> unionSet = new HashSet<int>(setA);
-            unionSet.UnionWith(setB);
-            Console.WriteLine("UnionWith: " + string.Join(", ", unionSet));
-
-            HashSet<int> intersectSet = new HashSet<int>(setA);
-            intersectSet.IntersectWith(setB);
-            Console.WriteLine("IntersectWith: " + string.Join(", ", intersectSet));
-
-            HashSet<int> exceptSet = new HashSet<int>(setA);
-            exceptSet.ExceptWith(setB);
-            Console.WriteLine("ExceptWith: " + string.Join(", ", exceptSet));
-
-            bool isSubset = new HashSet<int> { 1, 2 }.IsSubsetOf(setA);
-            Console.WriteLine($"Is {{1, 2}} a subset of Set A? {isSubset}");
+            bool success = printQueue.TryDequeue(out string? result);
+            Console.WriteLine($"\nTryDequeue on empty queue succeeded? {success}, Result: {result ?? "null"}");
             #endregion
-
         }
     }
 }
