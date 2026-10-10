@@ -138,27 +138,60 @@
             #endregion
 
             #region Answer 05
-            Queue<string> printQueue = new Queue<string>();
-            printQueue.Enqueue("Report.pdf");
-            printQueue.Enqueue("Invoice.pdf");
-            printQueue.Enqueue("Letter.docx");
-            printQueue.Enqueue("Resume.pdf");
-            printQueue.Enqueue("Photo.jpg");
+            //Queue<string> printQueue = new Queue<string>();
+            //printQueue.Enqueue("Report.pdf");
+            //printQueue.Enqueue("Invoice.pdf");
+            //printQueue.Enqueue("Letter.docx");
+            //printQueue.Enqueue("Resume.pdf");
+            //printQueue.Enqueue("Photo.jpg");
 
-            Console.WriteLine($"Queue Count: {printQueue.Count}");
-            Console.WriteLine($"Queue items: {string.Join(", ", printQueue)}");
+            //Console.WriteLine($"Queue Count: {printQueue.Count}");
+            //Console.WriteLine($"Queue items: {string.Join(", ", printQueue)}");
 
-            Console.WriteLine($"Next up (Peek): {printQueue.Peek()}");
+            //Console.WriteLine($"Next up (Peek): {printQueue.Peek()}");
 
-            Console.WriteLine("\nProcessing Print Queue:");
-            while (printQueue.Count > 0)
+            //Console.WriteLine("\nProcessing Print Queue:");
+            //while (printQueue.Count > 0)
+            //{
+            //    string doc = printQueue.Dequeue();
+            //    Console.WriteLine($"Printing: [{doc}]");
+            //}
+
+            //bool success = printQueue.TryDequeue(out string? result);
+            //Console.WriteLine($"\nTryDequeue on empty queue succeeded? {success}, Result: {result ?? "null"}");
+            #endregion
+
+
+
+
+            #region Answer 06
+            Stack<string> history = new Stack<string>();
+
+            history.Push("google.com");
+            history.Push("github.com");
+            history.Push("stackoverflow.com");
+            history.Push("youtube.com");
+            history.Push("claude.ai");
+
+            Console.WriteLine($"Current Page (Peek): {history.Peek()}");
+
+
+
+            for (int i = 0; i < 3; i++)
             {
-                string doc = printQueue.Dequeue();
-                Console.WriteLine($"Printing: [{doc}]");
+                string leftPage = history.Pop();
+                Console.WriteLine($"Left page: {leftPage}");
             }
 
-            bool success = printQueue.TryDequeue(out string? result);
-            Console.WriteLine($"\nTryDequeue on empty queue succeeded? {success}, Result: {result ?? "null"}");
+            Console.WriteLine($"\nCurrent Page after going back: {history.Peek()}");
+
+            while (history.Count > 0)
+            {
+                history.Pop();
+            }
+
+            bool popped = history.TryPop(out string? emptyResult);
+            Console.WriteLine($"TryPop on empty stack succeeded? {popped}");
             #endregion
         }
     }
