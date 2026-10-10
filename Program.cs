@@ -72,6 +72,42 @@
             //    Console.WriteLine($"Score: {kvp.Key} -> Player: {kvp.Value}");
             //}
             #endregion
+
+
+            #region Answe 03
+            Dictionary<string, string> phoneBook = new Dictionary<string, string>
+            {
+                { "Ahmed", "01012345678" },
+                { "Sara", "01198765432" },
+                { "Ali", "01233344455" },
+                { "Mona", "01599887766" }
+            };
+
+            phoneBook["Khaled"] = "01000000000";
+
+            try
+            {
+                phoneBook.Add("Ahmed", "01111111111"); 
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine($"Error caught: {ex.Message}");
+            }
+
+            bool added = phoneBook.TryAdd("Sara", "02222222222");
+            Console.WriteLine($"TryAdd duplicate 'Sara' succeeded? {added}");
+
+            bool found = phoneBook.ContainsKey("Ibrahim");
+            Console.WriteLine($"Does 'Ibrahim' exist? {found}");
+
+            string searchResult = phoneBook.GetValueOrDefault("Ibrahim", "Not Found");
+            Console.WriteLine($"Search for Ibrahim: {searchResult}");
+
+            Console.WriteLine("Keys: " + string.Join(", ", phoneBook.Keys));
+            Console.WriteLine("Values: " + string.Join(", ", phoneBook.Values));
+            #endregion
+
+
         }
     }
 }
