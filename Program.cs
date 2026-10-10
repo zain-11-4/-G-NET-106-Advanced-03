@@ -34,6 +34,44 @@
             //    Console.WriteLine(item);
             //}
             #endregion
+
+
+            #region Answer 02
+            //SortedList<int, string> leaderboard = new SortedList<int, string>()
+            //{
+            //    { 500, "Ahmed" },
+            //    { 200, "Sara" },
+            //    { 800, "Ali" },
+            //    { 350, "Mona" }
+            //};
+
+            //foreach (var kvp in leaderboard)
+            //{
+            //    Console.WriteLine($"Score: {kvp.Key}  Player: {kvp.Value}");
+            //}
+
+            //int firstKey = leaderboard.Keys[0];
+            //string firstValue = leaderboard.Values[0];
+            //Console.WriteLine($"Key: {firstKey}, Value: {firstValue}");
+
+            //bool has500 = leaderboard.ContainsKey(500);
+            //Console.WriteLine(has500);
+
+            //if (leaderboard.TryGetValue(999, out string? player999))
+            //{
+            //    Console.WriteLine($"Player found: {player999}");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Player with score 999 not found! (Handled safely without exception)");
+            //}
+
+            //leaderboard.Remove(200);
+            //foreach (var kvp in leaderboard)
+            //{
+            //    Console.WriteLine($"Score: {kvp.Key} -> Player: {kvp.Value}");
+            //}
+            #endregion
         }
     }
 }
